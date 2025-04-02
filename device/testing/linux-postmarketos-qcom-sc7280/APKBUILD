@@ -48,7 +48,8 @@ package() {
 		INSTALL_MOD_STRIP=1 \
 		INSTALL_DTBS_PATH="$pkgdir"/boot/dtbs
 	rm -f "$pkgdir"/lib/modules/*/build "$pkgdir"/lib/modules/*/source
-
+	mkdir -p "$pkgdir/lib/firmware/qcom/sm7325/nothing/spacewar"
+	curl https://github.com/gmankab/spacewar-pmos/releases/download/fw/focaltech_ts_novatek.bin -o "$pkgdir/lib/firmware/qcom/sm7325/nothing/spacewar/focaltech_ts_novatek.bin"
 	install -D "$builddir"/include/config/kernel.release \
 		"$pkgdir"/usr/share/kernel/$_flavor/kernel.release
 }
